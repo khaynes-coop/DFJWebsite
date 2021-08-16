@@ -51,7 +51,7 @@ export default function LandingPage(props) {
               <Button
                 color="danger"
                 size="lg"
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdueIVfmAxkYVaO7ru35uBMcYUF25cEE1MmSZQ7zndx6M1zCg/viewform?usp=sf_link"
+                href="/Form"
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -19,25 +19,19 @@ export default function ProductSection() {
     <div className={classes.section}>
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={8}>
-          <h2 className={classes.title}>Form</h2>
-          <h5 className={classes.description}>
+          <h1 className={classes.title}>Form</h1>
+          <h3 className={classes.description} size="small">
             Feel free to fill out this form, but please only submit if you are
             serious about a quote!
-          </h5>
+          </h3>
         </GridItem>
       </GridContainer>
       <div>
         <GridContainer justify="center">
-          <form>
-            <label>Email:</label>
-            <input type="text" />
-          </form>
-        </GridContainer>
-        <GridContainer justify="center">
           <GridItem>
             <h2 className={classes.title}>Pick the parts</h2>
           </GridItem>
-          <img src={image} height="800" justify="right"></img>
+          <img src={image} height="1100" width="900" justify="right"></img>
           <CheckboxesGroup />
         </GridContainer>
       </div>

@@ -5,6 +5,8 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import styles from "assets/jss/material-kit-react/views/landingPageSections/productStyle.js";
+import Button from "components/CustomButtons/Button.js";
+import CustomInput from "components/CustomInput/CustomInput.js";
 
 const useStyles = makeStyles(styles);
 
@@ -13,8 +15,12 @@ export default function CheckboxesGroup() {
   const [state, setState] = React.useState({
     Head: false,
     KHead: false,
+    MFan: false,
+    EarFan: false,
     Hands: false,
+    FHands: false,
     Feet: false,
+    OFeet: false,
     Body: false,
     DBody: false,
     Tail: false,
@@ -51,8 +57,12 @@ export default function CheckboxesGroup() {
   const {
     Head,
     KHead,
+    MFan,
+    EarFan,
     Hands,
+    FHands,
     Feet,
+    OFeet,
     Body,
     DBody,
     Tail,
@@ -72,6 +82,13 @@ export default function CheckboxesGroup() {
     <div>
       <div className={classes.root}>
         <FormControl component="fieldset" className={classes.formControl}>
+          <CustomInput
+            labelText="Email"
+            id="float"
+            formControlProps={{
+              fullWidth: true,
+            }}
+          />
           <FormGroup>
             <FormControlLabel
               control={
@@ -79,7 +96,7 @@ export default function CheckboxesGroup() {
                   checked={Head}
                   onChange={handleChange}
                   name="Head"
-                  value="500"
+                  value="550"
                 />
               }
               label="Western Head"
@@ -98,6 +115,28 @@ export default function CheckboxesGroup() {
             <FormControlLabel
               control={
                 <Checkbox
+                  checked={MFan}
+                  onChange={handleChange}
+                  name="MFan"
+                  value="50"
+                />
+              }
+              label="One Fan in the Mouth"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={EarFan}
+                  onChange={handleChange}
+                  name="EarFan"
+                  value="100"
+                />
+              }
+              label="Two Fans, One in Each Ear"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
                   checked={Hands}
                   onChange={handleChange}
                   name="Hands"
@@ -109,6 +148,17 @@ export default function CheckboxesGroup() {
             <FormControlLabel
               control={
                 <Checkbox
+                  checked={FHands}
+                  onChange={handleChange}
+                  name="FHands"
+                  value="150"
+                />
+              }
+              label="5 Fingered Handpaws"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
                   checked={Feet}
                   onChange={handleChange}
                   name="Feet"
@@ -116,6 +166,17 @@ export default function CheckboxesGroup() {
                 />
               }
               label="Indoor Feetpaws"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={OFeet}
+                  onChange={handleChange}
+                  name="OFeet"
+                  value="200"
+                />
+              }
+              label="Outdoor Feetpaws"
             />
             <FormControlLabel
               control={
@@ -200,7 +261,7 @@ export default function CheckboxesGroup() {
                   checked={Feathers}
                   onChange={handleChange}
                   name="Feathers"
-                  value="150"
+                  value="50"
                 />
               }
               label="Feathers"
@@ -211,7 +272,7 @@ export default function CheckboxesGroup() {
                   checked={Horns}
                   onChange={handleChange}
                   name="Horns"
-                  value="75"
+                  value="50"
                 />
               }
               label="Horns"
@@ -222,7 +283,7 @@ export default function CheckboxesGroup() {
                   checked={LHorns}
                   onChange={handleChange}
                   name="LHorns"
-                  value="150"
+                  value="75"
                 />
               }
               label="Large Horns"
@@ -261,10 +322,20 @@ export default function CheckboxesGroup() {
               label="Fullsuit Discount"
             />
           </FormGroup>
+          <CustomInput
+            labelText="Link to ref sheet"
+            id="float"
+            formControlProps={{
+              fullWidth: true,
+            }}
+          />
         </FormControl>
       </div>
       <div className={classes.root}>
         <h3 className={classes.title}>Total: {total}</h3>
+        <Button color="danger" size="lg">
+          Submit
+        </Button>
       </div>
     </div>
   );
