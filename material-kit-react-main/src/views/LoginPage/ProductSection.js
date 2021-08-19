@@ -31,7 +31,7 @@ export default function ProductSection() {
           <GridItem>
             <h2 className={classes.title}>Pick the parts</h2>
           </GridItem>
-          <img src={image} height="1100" width="900" justify="right"></img>
+          <img src={image} height="1200" width="900" justify="right"></img>
           <CheckboxesGroup />
         </GridContainer>
       </div>

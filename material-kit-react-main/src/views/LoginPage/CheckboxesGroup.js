@@ -7,8 +7,13 @@ import Checkbox from "@material-ui/core/Checkbox";
 import styles from "assets/jss/material-kit-react/views/landingPageSections/productStyle.js";
 import Button from "components/CustomButtons/Button.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
+import axios from "axios";
 
 const useStyles = makeStyles(styles);
+
+const api = axios.create({
+  baseURL: "https://http://localhost:5000/",
+});
 
 export default function CheckboxesGroup() {
   const classes = useStyles();
@@ -36,6 +41,11 @@ export default function CheckboxesGroup() {
     FDiscount: false,
   });
   const [total, setTotal] = React.useState(0); //seperate total to count value of item selected
+  const [Link, setLink] = React.useState("");
+  const [Email, setEmail] = React.useState("");
+
+  /*const button = document.getElementById("submit");
+  button.addEventListener("click", function () {});*/
 
   function calculateTotal(input, checked, total) {
     let j = total;
@@ -54,6 +64,12 @@ export default function CheckboxesGroup() {
     setTotal(calculateTotal([event.target.value], event.target.checked, total));
   };
 
+  const handleText = (event) => {
+    setLink(event.target.value);
+  };
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  };
   const {
     Head,
     KHead,
@@ -78,15 +94,26 @@ export default function CheckboxesGroup() {
     FDiscount,
   } = state;
 
+  async function submitForm() {
+    const currState = { state, total, Email, Link };
+    let res = await api.post("/", currState);
+    console.log(res.data);
+  }
+
   return (
     <div>
       <div className={classes.root}>
         <FormControl component="fieldset" className={classes.formControl}>
           <CustomInput
+            name="Email"
             labelText="Email"
             id="float"
             formControlProps={{
               fullWidth: true,
+            }}
+            inputProps={{
+              onChange: (event) => handleEmail(event),
+              value: Email,
             }}
           />
           <FormGroup>
@@ -323,17 +350,22 @@ export default function CheckboxesGroup() {
             />
           </FormGroup>
           <CustomInput
+            name="Link"
             labelText="Link to ref sheet"
-            id="float"
+            id="Link"
             formControlProps={{
               fullWidth: true,
+            }}
+            inputProps={{
+              onChange: (event) => handleText(event),
+              value: Link,
             }}
           />
         </FormControl>
       </div>
       <div className={classes.root}>
         <h3 className={classes.title}>Total: {total}</h3>
-        <Button color="danger" size="lg">
+        <Button id="submit" color="danger" size="lg" onClick={submitForm}>
           Submit
         </Button>
       </div>
