@@ -7,13 +7,14 @@ import Checkbox from "@material-ui/core/Checkbox";
 import styles from "assets/jss/material-kit-react/views/landingPageSections/productStyle.js";
 import Button from "components/CustomButtons/Button.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
-import axios from "axios";
+//import axios from "axios";
+import mail from "./Email.js";
 
 const useStyles = makeStyles(styles);
 
-const api = axios.create({
-  baseURL: "https://http://localhost:5000/",
-});
+//const api = axios.create({
+// baseURL: "https://http://localhost:5000/",
+//});
 
 export default function CheckboxesGroup() {
   const classes = useStyles();
@@ -95,9 +96,14 @@ export default function CheckboxesGroup() {
   } = state;
 
   async function submitForm() {
-    const currState = { state, total, Email, Link };
-    let res = await api.post("/", currState);
-    console.log(res.data);
+    //const currState = { state, total, Email, Link };
+    //let res = await api.post("/", currState);
+    //console.log(res.data);
+    try {
+      mail;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -365,7 +371,7 @@ export default function CheckboxesGroup() {
       </div>
       <div className={classes.root}>
         <h3 className={classes.title}>Total: {total}</h3>
-        <Button id="submit" color="danger" size="lg" onClick={submitForm}>
+        <Button id="submit" color="danger" size="lg" onClick={submitForm()}>
           Submit
         </Button>
       </div>

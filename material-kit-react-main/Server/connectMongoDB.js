@@ -8,8 +8,8 @@ const connectToDatabase = () => {
   mongoose
     .connect(link, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((error) => console.error(error));
-  mongoose.set("useCreateIndex", true);
-  mongoose.set("useFindAndModify", false);
+  //mongoose.set("useCreateIndex", true);
+  //mongoose.set("useFindAndModify", false);
   return mongoose.connection;
 };
 
